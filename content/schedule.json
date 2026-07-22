@@ -1,0 +1,28 @@
+{
+  "note": "Times may shift with the season — check This Week at B'nai Israel for changes.",
+  "sections": [
+    {
+      "title": "Shabbat",
+      "rows": [
+        { "name": "Kabbalat Shabbat", "time": "Candle lighting time" },
+        { "name": "Shacharit", "time": "9:00 AM" },
+        { "name": "Kiddush", "time": "Following davening" },
+        { "name": "Mincha", "time": "40 min before sunset" },
+        { "name": "Maariv & Havdalah", "time": "At Shabbat's end" }
+      ]
+    },
+    {
+      "title": "Sunday",
+      "rows": [
+        { "name": "Shacharit", "time": "8:30 AM" }
+      ]
+    },
+    {
+      "title": "Weekdays (Mon–Fri)",
+      "rows": [
+        { "name": "Shacharit", "time": "7:30 AM" },
+        { "name": "Mincha/Maariv", "time": "Seasonal — see weekly announcements" }
+      ]
+    }
+  ]
+}

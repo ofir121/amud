@@ -1,0 +1,95 @@
+# Decap CMS configuration — the /admin editing UI for non-technical editors.
+#
+# Local editing: run `npm run cms` in one terminal and `npm run dev` in another,
+# then open http://localhost:3000/admin (no login needed — local_backend).
+#
+# Production: requires a GitHub OAuth app so editors can log in with GitHub.
+# See README "CMS setup" for the two options (Netlify OAuth or a small OAuth proxy).
+
+backend:
+  name: github
+  repo: ofir121/amud
+  branch: main
+
+local_backend: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+site_url: /
+display_url: /
+
+collections:
+  - name: events
+    label: Events
+    label_singular: Event
+    folder: content/events
+    create: true
+    slug: "{{fields.date}}-{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sort_by: ["date"]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date & Time, widget: datetime }
+      - name: type
+        label: Type
+        widget: select
+        options:
+          - { label: Davening, value: davening }
+          - { label: Learning / Class, value: class }
+          - { label: Community, value: community }
+          - { label: Holiday, value: holiday }
+        default: community
+      - { name: location, label: Location, widget: string, required: false, hint: "e.g. Main Sanctuary, Social Hall" }
+      - { name: description, label: Short Description, widget: text }
+      - { name: image, label: Image, widget: image, required: false }
+      - { name: rsvpLink, label: RSVP Link, widget: string, required: false, hint: "Optional — URL for signups" }
+      - { name: body, label: More Details, widget: markdown, required: false, hint: "Optional longer text shown on the event page" }
+
+  - name: announcements
+    label: Weekly Announcements
+    label_singular: Announcements Post
+    folder: content/announcements
+    create: true
+    slug: "{{fields.weekOf}}-this-week"
+    summary: "{{title}} — week of {{weekOf}}"
+    sort_by: ["weekOf"]
+    fields:
+      - { name: title, label: Title, widget: string, default: "This Week at B'nai Israel" }
+      - { name: weekOf, label: Week of (Friday's date), widget: datetime, time_format: false, format: "YYYY-MM-DD" }
+      - { name: published, label: Publish Date, widget: datetime }
+      - { name: body, label: Announcements, widget: markdown, hint: "Schedule, kiddush sponsors, mazel tovs, refuah shleima…" }
+
+  - name: pages
+    label: Site Settings & Schedule
+    files:
+      - name: schedule
+        label: Davening Schedule
+        file: content/schedule.json
+        fields:
+          - { name: note, label: Note shown under the schedule, widget: string, required: false }
+          - name: sections
+            label: Schedule Sections
+            widget: list
+            fields:
+              - { name: title, label: Section Title, widget: string, hint: "e.g. Shabbat, Sunday, Weekdays" }
+              - name: rows
+                label: Times
+                widget: list
+                fields:
+                  - { name: name, label: Service, widget: string }
+                  - { name: time, label: Time, widget: string }
+      - name: settings
+        label: Contact & Site Info
+        file: content/settings.json
+        fields:
+          - { name: name, label: Congregation Name, widget: string }
+          - { name: tagline, label: Tagline, widget: string }
+          - { name: address, label: Address, widget: string }
+          - { name: phone, label: Phone, widget: string }
+          - { name: email, label: Office Email, widget: string }
+          - { name: rabbi, label: Rabbi, widget: string }
+          - { name: venmoHandle, label: Venmo Handle, widget: string }
+          - { name: zelleAddress, label: Zelle Address, widget: string }
+          - { name: facebook, label: Facebook URL, widget: string, required: false }
+          - { name: instagram, label: Instagram URL, widget: string, required: false }
