@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import EventCard from "@/components/EventCard";
 import NewsletterSignup from "@/components/NewsletterSignup";
@@ -18,12 +19,16 @@ export default async function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-900 text-white">
+        <Image
+          src="/photos/sanctuary.jpg"
+          alt="The historic sanctuary at B'nai Israel Congregation"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover opacity-30"
+        />
         <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 20% 30%, #d4a94e 0, transparent 40%), radial-gradient(circle at 80% 70%, #2c4a6e 0, transparent 50%)",
-          }}
+          className="absolute inset-0 bg-gradient-to-t from-navy-900 via-navy-900/85 to-navy-900/60"
           aria-hidden="true"
         />
         <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-28">
@@ -123,17 +128,72 @@ export default async function Home() {
               Our story
             </Link>
           </div>
-          <div className="rounded-xl bg-navy-700 p-8 text-center">
-            <p className="font-serif text-6xl text-gold-400" aria-hidden="true">
-              בית ישראל
-            </p>
-            <p className="mt-3 text-sm uppercase tracking-widest text-navy-100">
-              Congregation B&rsquo;nai Israel
-            </p>
-            {zmanim?.hebrewDate && (
-              <p className="mt-4 text-lg text-gold-100">{zmanim.hebrewDate}</p>
-            )}
+          <div className="overflow-hidden rounded-xl bg-navy-700">
+            <div className="relative aspect-[4/3]">
+              <Image
+                src="/photos/rabbi-mintz.jpg"
+                alt="Rabbi Etan Mintz inside the sanctuary at B'nai Israel"
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6 text-center">
+              <p className="font-serif text-4xl text-gold-400" aria-hidden="true">
+                בית ישראל
+              </p>
+              <p className="mt-2 text-sm uppercase tracking-widest text-navy-100">
+                Congregation B&rsquo;nai Israel
+              </p>
+              {zmanim?.hebrewDate && (
+                <p className="mt-3 text-lg text-gold-100">{zmanim.hebrewDate}</p>
+              )}
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Community life */}
+      <section className="mx-auto max-w-6xl px-4 py-14">
+        <h2 className="font-serif text-3xl font-bold text-navy-800">
+          Community life on Lloyd Street
+        </h2>
+        <div className="mt-6 grid gap-4 sm:grid-cols-3">
+          {[
+            {
+              src: "/photos/morning-minyan.jpg",
+              alt: "Members reading from the Torah at weekday minyan",
+              caption: "Weekday minyan",
+            },
+            {
+              src: "/photos/concert-series.jpg",
+              alt: "A performance in the sanctuary as part of the sacred music concert series",
+              caption: "Sacred Music Concert Series",
+            },
+            {
+              src: "/photos/community-gathering.jpg",
+              alt: "Members gathering at a community event",
+              caption: "Community gatherings",
+            },
+          ].map((photo) => (
+            <figure
+              key={photo.src}
+              className="overflow-hidden rounded-xl border border-parchment bg-white"
+            >
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  sizes="(min-width: 640px) 33vw, 90vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="px-4 py-3 text-sm font-medium text-ink/80">
+                {photo.caption}
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </section>
 

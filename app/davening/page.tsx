@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getSchedule } from "@/lib/content";
 import { getZmanim } from "@/lib/hebcal";
@@ -21,6 +22,17 @@ export default async function DaveningPage() {
       <p className="mt-2 text-lg text-gold-600">
         Traditional davening in our historic sanctuary, every week
       </p>
+
+      <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-xl">
+        <Image
+          src="/photos/morning-minyan.jpg"
+          alt="Members reading from the Torah at weekday minyan"
+          fill
+          sizes="(min-width: 1024px) 896px, 100vw"
+          className="object-cover"
+          priority
+        />
+      </div>
 
       {zmanim && (
         <section

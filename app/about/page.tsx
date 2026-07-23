@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { getSettings } from "@/lib/content";
 
@@ -18,6 +19,17 @@ export default function AboutPage() {
       <p className="mt-2 text-lg text-gold-600">
         A living landmark in Jewish downtown Baltimore
       </p>
+
+      <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-xl">
+        <Image
+          src="/photos/sanctuary.jpg"
+          alt="The Moorish-revival sanctuary at B'nai Israel Congregation"
+          fill
+          sizes="(min-width: 1024px) 896px, 100vw"
+          className="object-cover"
+          priority
+        />
+      </div>
 
       <div className="mt-8 space-y-5 leading-relaxed">
         <p>
@@ -46,16 +58,27 @@ export default function AboutPage() {
         </p>
       </div>
 
-      <section className="mt-10 rounded-xl border border-parchment bg-white p-6">
-        <h2 className="font-serif text-2xl font-bold text-navy-800">
-          Rabbi &amp; Leadership
-        </h2>
-        <p className="mt-3 leading-relaxed">
-          <strong>{s.rabbi}</strong> leads the congregation with a warm,
-          thoughtful approach to Torah and community, welcoming everyone from
-          lifelong members to first-time visitors. The shul is guided by a
-          volunteer board of directors drawn from the community.
-        </p>
+      <section className="mt-10 flex flex-col gap-5 rounded-xl border border-parchment bg-white p-6 sm:flex-row sm:items-start">
+        <div className="relative aspect-square w-full flex-shrink-0 overflow-hidden rounded-lg sm:w-32">
+          <Image
+            src="/photos/rabbi-mintz.jpg"
+            alt={s.rabbi}
+            fill
+            sizes="128px"
+            className="object-cover"
+          />
+        </div>
+        <div>
+          <h2 className="font-serif text-2xl font-bold text-navy-800">
+            Rabbi &amp; Leadership
+          </h2>
+          <p className="mt-3 leading-relaxed">
+            <strong>{s.rabbi}</strong> leads the congregation with a warm,
+            thoughtful approach to Torah and community, welcoming everyone
+            from lifelong members to first-time visitors. The shul is guided
+            by a volunteer board of directors drawn from the community.
+          </p>
+        </div>
       </section>
 
       <section className="mt-6 rounded-xl border border-parchment bg-white p-6">
