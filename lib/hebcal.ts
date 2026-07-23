@@ -20,12 +20,15 @@ interface HebcalItem {
 
 export async function getZmanim(): Promise<Zmanim | null> {
   try {
+    const today = new Date().toLocaleDateString("en-CA", {
+      timeZone: "America/New_York",
+    });
     const [shabbat, converter] = await Promise.all([
       fetch(
         `https://www.hebcal.com/shabbat?cfg=json&geonameid=${BALTIMORE_GEONAME_ID}&M=on`,
         { next: { revalidate: 3600 } }
       ),
-      fetch(`https://www.hebcal.com/converter?cfg=json&g2h=1&gs=off&date=today`, {
+      fetch(`https://www.hebcal.com/converter?cfg=json&g2h=1&gs=off&date=${today}`, {
         next: { revalidate: 3600 },
       }),
     ]);
