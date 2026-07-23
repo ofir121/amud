@@ -1,12 +1,12 @@
 {
-  "name": "B'nai Israel Congregation",
-  "tagline": "Downtown Baltimore's historic shul — davening in the same sanctuary since 1876",
-  "address": "27 Lloyd Street, Baltimore, MD 21202",
-  "phone": "(410) 732-5454",
-  "email": "office@jewishdowntown.org",
-  "rabbi": "Rabbi Etan Mintz",
-  "venmoHandle": "@BnaiIsraelBaltimore",
-  "zelleAddress": "giving@jewishdowntown.org",
   "facebook": "https://www.facebook.com/jewishdowntown",
-  "instagram": "https://www.instagram.com/jewishdowntown"
+  "venmoHandle": "@TestBnaiIsraelBaltimore",
+  "name": "B'nai Israel Congregation",
+  "phone": "(410) 732-5454",
+  "tagline": "Downtown Baltimore's historic shul — davening in the same sanctuary since 1876",
+  "instagram": "https://www.instagram.com/jewishdowntown",
+  "address": "27 Lloyd Street, Baltimore, MD 21202",
+  "zelleAddress": "test-giving@jewishdowntown.org",
+  "rabbi": "Rabbi Etan Mintz",
+  "email": "office@jewishdowntown.org"
 }
