@@ -10,6 +10,7 @@ backend:
   name: github
   repo: ofir121/amud
   branch: main
+  base_url: https://api.netlify.com
 
 local_backend: true
 
