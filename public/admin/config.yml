@@ -6,6 +6,8 @@
 # Production: requires a GitHub OAuth app so editors can log in with GitHub.
 # See README "CMS setup" for the two options (Netlify OAuth or a small OAuth proxy).
 
+logo_url: /admin/logo.svg
+
 backend:
   name: github
   repo: ofir121/amud
